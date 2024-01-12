@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hos.mapper.RecordMapper">
+   <select id="memberRecordGet" resultType="com.hos.model.RecordVO">
+
+      select * from hos_record where memberNum = #{memberNum} ORDER BY recordNum
+      DESC
+
+   </select>
+
+   <!-- Record 디테일 페이지 -->
+   <select id="recordGetDetail" resultType="com.hos.model.RecordVO">
+
+      select * from hos_record where recordNum = #{recordNum}
+
+   </select>
+
+   <select id="recordDetail" resultType="com.hos.model.RecordVO">
+
+      select * from hos_record where memberNum = #{memberNum}
+
+   </select>
+   
+    <!-- Record 목록 -->
+      <select id="recordGetList" resultType="com.hos.model.RecordVO">
+      
+      <![CDATA[
+          select * from (
+              select /*+INDEX_DESC(hos_record SYS_C008627) */ 
+                  rownum as rn, recordNum, doctorNum, memberNum, recordTitle, recordContent, recordDate, dsDate, expense
+            from hos_record 
+            where
+             
+    ]]>         
+            <if test="keyword != null">
+                recordNum like '%'||#{keyword}||'%' and
+            </if>
+            
+    <![CDATA[        
+             rownum <= #{pageNum}*#{amount}
+            )
+        where rn > (#{pageNum} - 1) * #{amount}
+      ]]>
+      
+      </select>
+      
+      <select id="recordGetTotal" resultType="int">
+      
+          select count(*) from hos_record
+          
+          <if test="keyword != null">
+          
+             where recordTitle like '%' || #{keyword} || '%'
+          
+          </if>
+          
+      </select>
+
+</mapper>

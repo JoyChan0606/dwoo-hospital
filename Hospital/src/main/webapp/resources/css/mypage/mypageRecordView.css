@@ -1,0 +1,149 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding:0;
+}
+/* 화면 전체 렙 */
+.wrapper{
+	width: 1900px;
+}
+/* content 랩 */
+.wrap{
+	width : 1080px;
+	margin: auto;
+}
+/* 홈페이지 기능 네비 */ 
+.top_gnb_area {
+	height: 50px;
+	width: 100%;
+	background-color: white;
+}
+/* 마이 페이지 헤더 */ 
+.mypage_header{
+	font-size: 20px;
+	text-align:center;
+	width: 100%;
+	height: 40px;
+    letter-spacing: 1px;;
+    background-color: #60a6d9;
+	line-height: 40px;
+}
+
+.mypage_header a{
+	padding:35px;
+	text-decoration: none;
+	color:black;
+}
+
+.mypage_header ul{
+	width:100%;
+	font-weight : bold;
+    float:left;
+    list-style:none;
+    padding-top:5px;
+    line-height: 27px;
+}
+.mypage_header li{
+    display:inline;
+    width: 45px;
+    height: 19px;
+}
+.mypage_header ul>span{
+    margin: 0 4px;
+}
+
+.title{
+	padding: 15px;
+}
+
+.table_wrap{
+	margin-top: 35px;
+}
+
+.table_menu{
+	background-color: #508bc8;
+}
+
+.list_table{
+	width: 90%;
+    border: 2px solid #000204;
+	font-size: 20px;
+	margin: auto;
+	text-align: center;
+    border-collapse: collapse;
+	background-color: white;
+}
+
+.list_table td{
+	padding: 10px 5px;
+	border : 1px solid #000204;
+}
+
+.list_table th{
+	padding: 10px 5px;
+	border : 1px solid #000204;
+}
+
+.list_table a{
+	text-decoration: none;
+	color:#146cb5;
+}
+
+.pageMaker_wrap {
+	text-align: center;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.pageMaker{
+    list-style: none;
+    display: inline-block;
+}
+	
+.pageMaker_btn {
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 14px;
+    margin-left: 20px;
+}
+
+.pageMaker_btn a{
+	font-size: 27px;
+	color:black;
+	text-decoration:none;
+	border : 2px solid #000204;
+	padding: 10px 21px;
+	background-color: #a5cbf3;
+}
+
+/* 홈페이지 메인 제품 목록  */
+.content_area{
+	font-size: 30pt;
+	font-weight: bold;
+	text-align:center;
+	margin: auto;
+	width: 100%;
+    background-color: #ffffff;
+    height:860px;
+	
+}
+
+.content-white_area{
+    background-color: #ffffff;
+	height:750px;
+	padding-top: 10px;
+	padding-bottom: 48px;
+	width: 1020px;
+	margin:auto;
+	border-radius: 150px;
+}
+
+ul{
+
+	list-style-type: none;
+}
+/* float 속성 해제 */
+.clearfix{
+	clear: both;
+}

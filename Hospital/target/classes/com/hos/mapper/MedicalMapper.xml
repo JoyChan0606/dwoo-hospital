@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hos.mapper.MedicalMapper">
+	<select id="medicalLogin" resultType="com.hos.model.DoctorVO">
+		select * from hos_doctor
+		where doctorName = #{doctorName} and doctorNum = #{doctorNum}
+	</select>
+
+	<select id="reservCheck" resultType="com.hos.model.CheckVO">
+      
+      <![CDATA[
+          select * from (
+              select /*+INDEX_DESC(hos_check SYS_C008620) */ 
+                  rownum as rn, checkNum, memberNum, memberName, subject, checkDate, checkTime, memberPhone
+            from hos_check 
+            where
+             
+    	]]>
+		<if test="keyword != null">
+			memberName like '%'||#{keyword}||'%' and
+		</if>
+            
+    <![CDATA[        
+             rownum <= #{pageNum}*#{amount}
+            )
+        where rn > (#{pageNum} - 1) * #{amount}
+      ]]>
+
+	</select>
+
+	<select id="checkTotal" resultType="int">
+
+		select count(*) from hos_check
+
+		<if test="keyword != null">
+
+			where memberName like '%' || #{keyword} || '%'
+
+		</if>
+
+	</select>
+
+	<select id="recordTotal" resultType="int">
+
+		select count(*) from hos_record
+
+		<if test="keyword != null">
+
+			where recordTitle like '%' || #{keyword} || '%'
+
+		</if>
+
+	</select>
+
+	<insert id="recordInsert">
+		insert into hos_record (doctorNum, memberNum,
+		recordTitle, recordContent, recordDate, dsDate) values (#{doctorNum},
+		#{memberNum}, #{recordTitle}, #{recordContent}, sysdate, sysdate)
+
+	</insert>
+
+	<delete id="checkDelete">
+		delete from hos_check where memberNum = #{memberNum}
+	</delete>
+
+	<!-- 상품 리스트 -->
+	<select id="DoctorList" resultType="com.hos.model.DoctorVO">
+  	
+	  	<![CDATA[
+		select * from(
+		    select /*+INDEX_DESC(hos_doctor SYS_C008624)*/ rownum as rn, doctornum, doctorname,doctorcontent,subject
+		    from hos_doctor
+		    where 
+		]]>
+
+		<if test="keyword != null">
+
+			doctorname like '%' || #{keyword} || '%' and
+
+		</if>
+		     
+		<![CDATA[    
+		    rownum <= #{pageNum} * #{amount} 
+		    )
+		where rn > (#{pageNum} -1) * #{amount}		  	
+  		]]>
+
+	</select>
+
+	<!-- 상품 총 개수 -->
+	<select id="DoctodTotal" resultType="int">
+
+		select count(*) from hos_doctor
+
+		<if test="keyword != null">
+
+			where doctorName like '%' || #{keyword} || '%'
+		</if>
+
+	</select>
+
+	<!-- 진료 기록 리스트 -->
+	<select id="recordList" resultType="com.hos.model.RecordVO">
+		select * from hos_record where doctorNum = #{doctorNum}
+	</select>
+
+	<!-- 진료 기록 상세 -->
+	<select id="recordDetail" resultType="com.hos.model.RecordVO">
+		select * from hos_record
+		where recordNum = #{recordNum}
+	</select>
+
+	<!-- 진료 기록 수정 -->
+	<update id="recordModify">
+		update hos_record set recordTitle = #{recordTitle},
+		recordContent = #{recordContent} where recordNum = #{recordNum}
+	</update>
+
+	<!-- 진료 기록 삭제 -->
+	<delete id="recordDelete">
+		delete from hos_record where recordNum = #{recordNum}
+	</delete>
+	<select id="doctorGetDetail" resultType="com.hos.model.DoctorVO">
+
+		select * from hos_doctor where doctorNum = #{doctorNum}
+
+	</select>
+</mapper>

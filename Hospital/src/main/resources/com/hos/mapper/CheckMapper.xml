@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hos.mapper.CheckMapper">
+	
+	<resultMap id="memberResultMap" type="com.hos.model.MemberVO">
+      <id property="memberNum" column="memberNum" />
+      <result property="memberId" column="memberId" />
+      <result property="memberName" column="memberName" />
+      <result property="memberPw" column="memberPw" />
+      <result property="memberIDNum" column="memberIDNum" />
+      <result property="memberPhone" column="memberPhone" />
+      <result property="memberEmail" column="memberEmail" />
+      <result property="gender" column="gender" />
+      <result property="adminCk" column="adminCk" />
+      
+      <collection property="cvo" resultMap="checkResultMap" />
+   </resultMap>
+
+   <resultMap id="checkResultMap" type="com.hos.model.CheckVO">
+   	  <id property="checkNum" column="checkNum" />
+      <result property="memberNum" column="memberNum" />
+      <result property="memberName" column="memberName" />
+      <result property="memberIDNum" column="memberIDNum" />
+      <result property="subject" column="subject" />
+      <result property="checkDate" column="checkDate" />
+      <result property="checkTime" column="checkTime" />
+      <result property="memberPhone" column="memberPhone" />
+   </resultMap>
+	
+	<!-- 예약 버튼 -->
+	<insert id="insertCheck">
+
+		INSERT INTO hos_check (memberNum, memberName, subject, checkDate, checkTime, memberPhone)
+		VALUES (#{memberNum}, #{memberName}, #{subject}, #{checkDate}, #{checkTime}, #{memberPhone})
+
+	</insert>
+	
+	<!-- 예약 정보 수정 -->
+	<insert id="modifyCheck">
+
+		UPDATE hos_check set subject = #{subject}, checkDate = #{checkDate}, checkTime = #{checkTime}
+		where checkNum = #{checkNum}
+
+	</insert>
+	
+	<!-- 예약 정보 삭제 -->
+	<insert id="deleteCheck">
+
+		DELETE INTO hos_check where memberNum = #{memberNum}
+
+	</insert>
+	
+	<!-- 체크 값 가져오기 -->
+	<select id="checkGetDetail" resultMap="checkResultMap">
+	
+		SELECT a.checkNum, a.memberNum, b.memberName, b.memberIDNum, a.subject, a.checkDate, a.checkTime, a.memberPhone
+		FROM hos_check a
+		JOIN hos_member b ON a.memberNum = b.memberNum
+		WHERE b.memberNum = #{memberNum}
+	
+	</select>
+</mapper>

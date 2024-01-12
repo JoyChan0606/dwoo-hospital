@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hos.mapper.AdminMapper">
+	<!-- 의료진 등록 -->
+	<insert id="doctorEnroll" useGeneratedKeys="true"
+		keyProperty="doctorNum">
+		<selectKey resultType="int" keyProperty="doctorNum"
+			order="AFTER">
+
+			SELECT ISEQ$$_78882.nextval from dual
+
+		</selectKey>
+		insert into hos_doctor(doctorName, doctorContent, subject)
+		values(
+		#{doctorName}, #{doctorContent}, #{subject} )
+	</insert>
+
+	<!-- 이미지 등록 -->
+	<insert id="imageEnroll">
+
+		insert into hos_image(doctorNum, fileName, uploadPath, uuid)
+		values (#{doctorNum}, #{fileName}, #{uploadPath}, #{uuid})
+
+	</insert>
+
+
+	<select id="doctorGetDetail" resultType="com.hos.model.DoctorVO">
+
+		select * from hos_doctor where doctorNum = #{doctorNum}
+
+	</select>
+
+	<delete id="doctorDelete">
+
+		delete from hos_doctor where doctorNum = #{doctorNum}
+
+	</delete>
+
+	<!-- 상품 정보 수정 -->
+	<update id="doctorModify">
+
+		update hos_doctor set doctorName = #{doctorName}, doctorContent =
+		#{doctorContent}, subject = #{subject }
+		where doctorNum = ${doctorNum}
+
+	</update>
+
+	<delete id="deleteImageAll">
+
+		delete FROM hos_image where doctorNum = #{doctorNum}
+
+	</delete>
+
+
+
+</mapper>

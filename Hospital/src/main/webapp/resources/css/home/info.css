@@ -1,0 +1,224 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #000000;
+	font-size: 15px;
+}
+
+nav {
+	width: 100%;
+	overflow: hidden;
+	height: 80px;
+	background-color: #7696fd;
+}
+
+/* 화면 전체 랩 */
+.wrapper {
+	width: 100%;
+	height: 1000px;
+	background-color: white;
+}
+
+/* content 랩 */
+.wrap {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+
+/* 홈페이지 기능 네비 */
+.top_gnb_area {
+	height: 50px;
+	width: 80%;
+	margin-left: 10%;
+	background-color: white;
+}
+
+/* 로고, 검색, 로그인 */
+.top_area {
+	width: 80%;
+	margin-left: 10%;
+	height: 550px;
+}
+
+li {
+	list-style: none;
+}
+
+/* 로고 영역 */
+/* .logo_area {
+	width: 25%;
+	height: 100%;
+	background-color: #f8f8f8; 변경된 색상
+	float: left;
+} */
+
+/* 병원 건물 사진 */
+.land_area {
+	width: 100%;
+	height: 100%;
+	background-color: #dbe5db; /* 변경된 색상 */
+	float: left;
+}
+
+/* 로그인 버튼 영역 
+.login_area {
+	width: 25%;
+	height: 100%;
+	display: inline-block;
+	text-align: center;
+	background-color: white;
+} */
+
+/* .login_button {
+	height: 50%;
+	background-color: #4caf50; 변경된 색상
+	margin-top: 30px;
+	line-height: 77px;
+	font-size: 40px;
+	font-weight: 900;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.login_area>span {
+	margin-top: 10px;
+	font-weight: 900;
+	display: inline-block;
+}
+ */
+/* 제품 목록 네비 */
+.navi_bar_area {
+	width: 80%;
+	margin-left: 10%;
+	background-color: #7696fd;
+}
+
+#nav1 {
+	text-align: center;
+}
+
+#nav1>ul {
+	display: inline-block;
+}
+
+#nav1>ul li {
+	float: left;
+	padding: 0 30px;
+	line-height: 80px;
+}
+
+/* 홈페이지 메인 제품 목록 */
+.content_area {
+	width: 80%;
+	margin-left: 10%;
+	height: 100%;
+	background-color: #f0f8ff;
+	padding: 50px;
+	text-align: center;
+}
+
+.content_area h1 {
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+.content_area h2 {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.content_area h3 {
+	font-size: 18px;
+	color: #666;
+}
+
+.intro_list {
+	width: 80%;
+	margin-left: 10%;
+	overflow: hidden;
+}
+
+.intro_box {
+    width: 400px;
+    height: 405px;
+    margin-left: 5%;
+    display: block;
+    cursor: pointer;
+    float: left;
+}
+
+.intro_box img {
+	border-radius:50px;
+	transition: all 1s;
+	-webkit-transition: all 1s;
+	width: 90%;
+	height: 60%;
+}
+
+.intro_title {
+	font-weight: bold;
+	font-size: 22px;
+	text-align: center;
+	color: #1a7ad9;
+	padding-top: 30px;
+}
+
+.intro_desc {
+	padding-top: 20px;
+	font-weight: bold;
+	color: #555555;
+	font-size: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: 22px;
+}
+
+div, input, label, a, select, ul, li {
+	box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+	u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+
+/* float 속성 해제 */
+.clearfix {
+	clear: both;
+}
+table {
+  border-collapse: collapse;
+  border: 2px solid #000000;
+  width: 100%;
+  height: 300px;
+}
+th,
+td {
+  border: 2px solid #000000;
+  background-clip: padding-box;
+  scroll-snap-align: start;
+}
+/* float 속성 해제 */
+.clearfix{
+	clear: both;
+}
